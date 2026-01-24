@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - ShotSift</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 10px;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+        }
+
+        .faq-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #667eea;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item h3:before {
+            content: "▶";
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active h3:before {
+            transform: rotate(90deg);
+        }
+
+        .faq-answer {
+            color: #555;
+            line-height: 1.8;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            margin-bottom: 15px;
+        }
+
+        .faq-answer ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #cbd5e0;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #4a5568;
+            color: #cbd5e0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .faq-section,
+            .contact-card {
+                padding: 30px 20px;
+            }
+
+            .faq-section h2 {
+                font-size: 28px;
+            }
+
+            .faq-item h3 {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">ShotSift</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>We're Here to Help</h1>
+            <p>Find answers to common questions or get in touch with our support team.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="contact-card">
+            <h2>Need Support?</h2>
+            <p>Have a question or issue? We respond as quickly as possible.</p>
+            <a href="mailto:mip@gmx.biz" class="contact-button">Email Support</a>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>How does ShotSift work?</h3>
+                <div class="faq-answer">
+                    <p>ShotSift scans your photo library entirely on your device using Apple's built-in frameworks. It analyzes photos to find duplicates, screenshots, blurry images, and more. All processing happens locally on your iPhone or iPad - your photos never leave your device.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is my data private and secure?</h3>
+                <div class="faq-answer">
+                    <p>Absolutely! ShotSift is built with privacy as the top priority:</p>
+                    <ul>
+                        <li>All photo analysis happens on your device</li>
+                        <li>No photos are uploaded to any server</li>
+                        <li>No tracking or analytics</li>
+                        <li>No third-party SDKs</li>
+                        <li>Works completely offline</li>
+                    </ul>
+                    <p>Your photos stay yours, always.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Why do some photos appear blurry?</h3>
+                <div class="faq-answer">
+                    <p>Photos stored in iCloud may appear blurry in the preview if they haven't been downloaded to your device yet. Look for the cloud icon on thumbnails - this indicates the photo is in iCloud. You can:</p>
+                    <ul>
+                        <li>Long-press any photo to view it in full resolution (downloads from iCloud)</li>
+                        <li>Enable "Allow iCloud downloads" in scan options to download photos during scanning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>What's the difference between free and premium?</h3>
+                <div class="faq-answer">
+                    <p><strong>Free features include:</strong></p>
+                    <ul>
+                        <li>Duplicate detection</li>
+                        <li>Screenshot detection</li>
+                        <li>Burst photo detection</li>
+                        <li>Live Photo detection</li>
+                        <li>25 free deletions per day</li>
+                    </ul>
+                    <p><strong>Premium adds:</strong></p>
+                    <ul>
+                        <li>Similar photo detection with AI</li>
+                        <li>Best shot suggestions</li>
+                        <li>Blurry photo detection</li>
+                        <li>Large video finder</li>
+                        <li>Unlimited deletions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I delete photos?</h3>
+                <div class="faq-answer">
+                    <p>After running a scan:</p>
+                    <ol>
+                        <li>Tap on any category (Duplicates, Screenshots, etc.)</li>
+                        <li>Select the photos you want to delete by tapping them</li>
+                        <li>Tap the "Delete" button</li>
+                        <li>Confirm the deletion</li>
+                    </ol>
+                    <p>Deleted photos are moved to "Recently Deleted" in the Photos app where they'll be permanently removed after 30 days (or you can delete them immediately from there).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I undo deletions?</h3>
+                <div class="faq-answer">
+                    <p>Yes! When you delete photos through ShotSift, they're moved to the "Recently Deleted" album in the Photos app. You have 30 days to recover them before they're permanently deleted. Just open the Photos app, go to "Recently Deleted," and restore any photos you want to keep.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>How does duplicate detection work?</h3>
+                <div class="faq-answer">
+                    <p>ShotSift uses cryptographic hashing to identify exact duplicates by comparing the binary data of photos. This is extremely accurate and fast, even with large photo libraries.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>What are "similar photos"?</h3>
+                <div class="faq-answer">
+                    <p>Similar photos are near-duplicates - photos that look very similar but aren't identical. This feature uses Apple's Vision framework to analyze photo content and group similar images together. It's perfect for finding multiple shots of the same scene and picking the best one.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Does ShotSift work on iPad?</h3>
+                <div class="faq-answer">
+                    <p>Yes! ShotSift is fully optimized for iPad with support for landscape and portrait orientations, split-view multitasking, and a beautiful sidebar navigation interface.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I restore my purchase?</h3>
+                <div class="faq-answer">
+                    <p>If you purchased ShotSift Premium on another device or after reinstalling the app:</p>
+                    <ol>
+                        <li>Open ShotSift</li>
+                        <li>Tap the Premium/paywall screen</li>
+                        <li>Tap "Restore Purchases"</li>
+                    </ol>
+                    <p>Your purchase is linked to your Apple ID and will be restored automatically.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Why does the scan take a long time?</h3>
+                <div class="faq-answer">
+                    <p>Scan time depends on your library size and which features you enable. Processing thousands of photos with AI-powered features like similarity detection and blur analysis is computationally intensive. The app does all this on your device to protect your privacy, which takes more time than cloud-based solutions but keeps your photos secure.</p>
+                    <p>Tips for faster scans:</p>
+                    <ul>
+                        <li>Use the photo limit option to scan fewer photos</li>
+                        <li>Disable premium features if you don't need them</li>
+                        <li>Keep your device plugged in during large scans</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I cancel my purchase?</h3>
+                <div class="faq-answer">
+                    <p>ShotSift Premium is a one-time purchase (not a subscription). If you're not satisfied, you can request a refund directly from Apple:</p>
+                    <ol>
+                        <li>Go to reportaproblem.apple.com</li>
+                        <li>Sign in with your Apple ID</li>
+                        <li>Find your ShotSift purchase</li>
+                        <li>Select "Request a refund"</li>
+                    </ol>
+                    <p>Apple typically processes refund requests within 48 hours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="mailto:mip@gmx.biz">Contact</a>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShotSift. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ accordion
+        document.querySelectorAll('.faq-item h3').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
